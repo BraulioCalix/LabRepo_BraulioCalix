@@ -1,0 +1,5 @@
+metodos que sirven:
+changeUser
+changeMachine
+clear
+file

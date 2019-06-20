@@ -8,6 +8,7 @@ int main(){
     char maquin[24]="vm-gauss";
     bool menu=true;
     char document[256];
+    string archivos="";
     while(menu==true){
     initscr();//empieza
     char accion[30];
@@ -77,10 +78,51 @@ int main(){
         ofstream outFile;
         string archivo="";
         archivo=nombre;
+        archivos+=nombre;
         archivo+=".txt";
 	        outFile.open(archivo,std::ios::app);
-	        outFile<<" "<<endl;
+	        outFile<<""<<endl;
+            outFile.close();
     }
+    
+    if (accion[0]=='w'&&accion[1]=='r'&&accion[2]=='i'&&accion[3]=='t'&&accion[4]=='e'){
+        //printw(" mensakeee");
+        char nombre[256];
+        int cont=0;
+        int cont2=0;
+        for (int i = 6; i < 256; i++){
+            if (accion[i]=='.'){
+                cont2=i+5;
+                break;
+            }else{
+                nombre[cont]=accion[i];
+                cont++;  
+            }
+        } 
+        string mensaje="";
+        printw("archivos ",archivos);
+        if (archivos.find(nombre)==true){
+           printw("lo encontro");
+            for (int i = cont2; i < 256; i++){
+                mensaje+=accion[i];
+            }
+            string archivo="";
+            archivo=nombre;
+            archivo+=".txt";
+
+             ofstream outFile;
+            outFile.open(archivo,std::ios::app);
+	        outFile<<mensaje<<" "<<endl;
+            printw("mensaje");
+            printw("%s",mensaje);
+            outFile.close();
+            
+        }
+        
+        
+        
+    }
+    
     
 
     refresh();
